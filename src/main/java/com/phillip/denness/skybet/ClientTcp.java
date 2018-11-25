@@ -35,17 +35,20 @@ public class ClientTcp {
             try {
                 echoSocket = new Socket(host, port);
                 in = new BufferedReader(new InputStreamReader(echoSocket.getInputStream()));
+                while (true) {
+                    service.save(in.readLine());
+                }
             } catch (UnknownHostException e) {
                 log.error("Unknown host: " + host);
                 System.exit(1);
             } catch (IOException e) {
                 log.error("Unable to get streams from server");
                 System.exit(1);
+            } finally {
+                assert echoSocket != null;
+                echoSocket.close();
             }
 
-            while (in != null) {
-                service.save(in.readLine());
-            }
 
             /** Closing all the resources */
             in.close();

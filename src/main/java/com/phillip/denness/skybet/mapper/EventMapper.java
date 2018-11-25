@@ -7,9 +7,6 @@ public class EventMapper {
 
     public static Event map(String[] recordList) {
 
-//        for (int i = 0; i < recordList.length; i++) {
-//            System.out.println(recordList[i]);
-//        }
         Header header = HeaderMapper.map(recordList);
 
         Event event = new Event();

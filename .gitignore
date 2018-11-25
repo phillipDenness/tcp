@@ -67,3 +67,11 @@ gradlew
 gradle/wrapper/
 
 gradlew\.bat
+
+out/production/classes/com/phillip/denness/skybet/
+
+out/production/resources/
+
+out/test/classes/com/phillip/denness/skybet/mapper/
+
+out/test/classes/com/phillip/denness/skybet/
