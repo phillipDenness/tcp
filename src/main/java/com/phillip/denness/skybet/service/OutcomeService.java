@@ -1,5 +1,6 @@
 package com.phillip.denness.skybet.service;
 
+import com.phillip.denness.skybet.model.Event;
 import com.phillip.denness.skybet.model.Market;
 import com.phillip.denness.skybet.model.Outcome;
 import org.slf4j.Logger;
@@ -17,8 +18,7 @@ public class OutcomeService {
     @Autowired
     private MarketService marketService;
 
-    public Outcome save(Outcome outcome) {
-        log.info(outcome.toString());
+    public Event save(Outcome outcome) {
         Optional<Market> optionalMarket = marketService.getMarket(outcome.getMarketId());
         Market market = null;
 
@@ -31,7 +31,6 @@ public class OutcomeService {
         }
 
         market.addOutcome(outcome);
-        marketService.save(market);
-        return outcome;
+        return marketService.save(market);
     }
 }
