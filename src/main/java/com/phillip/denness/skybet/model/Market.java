@@ -1,13 +1,36 @@
 package com.phillip.denness.skybet.model;
 
+import org.springframework.data.annotation.Id;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class Market {
 
     private Header header;
     private String eventId; // 4
+
+    @Id
     private String marketId; // 5
     private String name; // 6
     private boolean displayed; // 7
     private boolean suspended; // 8
+    private List<Outcome> outcomeList;
+
+    public List<Outcome> getOutcomeList() {
+        return outcomeList;
+    }
+
+    public void setOutcomeList(List<Outcome> outcomeList) {
+        this.outcomeList = outcomeList;
+    }
+
+    public void addOutcome(Outcome outcome) {
+        if (this.outcomeList == null) {
+            setOutcomeList(new ArrayList<>());
+        }
+        this.outcomeList.add(outcome);
+    }
 
     public Header getHeader() {
         return header;

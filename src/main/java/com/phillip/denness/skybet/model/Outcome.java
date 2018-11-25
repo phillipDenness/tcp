@@ -1,9 +1,13 @@
 package com.phillip.denness.skybet.model;
 
+import org.springframework.data.annotation.Id;
+
 public class Outcome {
 
     private Header header;
     private String marketId; // 4
+
+    @Id
     private String outcomeId; // 5
     private String name; // 6
     private String price; // 7

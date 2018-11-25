@@ -40,4 +40,14 @@ public class Header {
     public void setTimestamp(Date timestamp) {
         this.timestamp = timestamp;
     }
+
+    @Override
+    public String toString() {
+        return "Header{" +
+                "msgIg=" + msgIg +
+                ", operation='" + operation + '\'' +
+                ", type='" + type + '\'' +
+                ", timestamp=" + timestamp +
+                '}';
+    }
 }

@@ -18,8 +18,20 @@ public class OutcomeMapper {
         outcome.setOutcomeId(recordList[5]);
         outcome.setName(recordList[6]);
         outcome.setPrice(recordList[7]);
-        outcome.setDisplayed(Boolean.valueOf(recordList[8]));
-        outcome.setDisplayed(Boolean.valueOf(recordList[9]));
+
+        try{
+            int myInt = Integer.valueOf(recordList[8]);
+            outcome.setDisplayed(myInt == 1);
+        } catch (NumberFormatException e) {
+            outcome.setDisplayed(Boolean.valueOf(recordList[8]));
+        }
+
+        try{
+            int myInt = Integer.valueOf(recordList[9]);
+            outcome.setSuspended(myInt == 1);
+        } catch (NumberFormatException e) {
+            outcome.setSuspended(Boolean.valueOf(recordList[9]));
+        }
 
         return outcome;
     }

@@ -1,10 +1,16 @@
 package com.phillip.denness.skybet.model;
 
+import org.springframework.data.annotation.Id;
+
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class Event {
 
     private Header header;
+
+    @Id
     private String eventId; // 4
     private String category; // 5
     private String subCategory; // 6
@@ -12,6 +18,22 @@ public class Event {
     private Date startTime; // 8
     private boolean displayed; // 9
     private boolean suspended; // 10
+    private List<Market> marketList;
+
+    public List<Market> getMarketList() {
+        return marketList;
+    }
+
+    public void setMarketList(List<Market> marketList) {
+        this.marketList = marketList;
+    }
+
+    public void addMarket(Market market) {
+        if (this.marketList == null) {
+            setMarketList(new ArrayList<>());
+        }
+        this.marketList.add(market);
+    }
 
     public Header getHeader() {
         return header;

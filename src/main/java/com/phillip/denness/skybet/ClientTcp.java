@@ -18,8 +18,8 @@ public class ClientTcp {
 
     Logger log = LoggerFactory.getLogger(getClass());
 
-    @Value("${atps.chLink.host}") String host;
-    @Value("${atps.chLink.chLogs.port}") int port;
+    @Value("${sky.tcplink.host}") String host;
+    @Value("${sky.tcplink.port}") int port;
 
     @Autowired
     private TcpService service;
