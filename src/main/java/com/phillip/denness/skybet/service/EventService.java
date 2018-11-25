@@ -26,6 +26,9 @@ public class EventService {
     }
 
     public Optional<List<Event>> getMarket(String marketId) {
+        if (marketId == null) {
+            return Optional.empty();
+        }
         return repository.findByMarketListMarketId(marketId);
     }
 }

@@ -18,7 +18,7 @@ public class MarketService {
     @Autowired
     private EventService eventService;
 
-    public Market save(Market market) {
+    public Event save(Market market) {
         Optional<Event> optionalEvent = eventService.getEvent(market.getEventId());
         Event event = null;
         if (optionalEvent.isPresent()) {
@@ -29,8 +29,7 @@ public class MarketService {
             log.error("No event found for: " + market.getEventId() + " - Created event placeholder. App support ticket...");
         }
         event.addMarket(market);
-        eventService.save(event);
-        return market;
+        return eventService.save(event);
     }
 
     public Optional<Market> getMarket(String id) {
