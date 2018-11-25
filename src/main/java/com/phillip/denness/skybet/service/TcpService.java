@@ -35,9 +35,7 @@ public class TcpService {
     }
 
     public void save(String record) {
-
-        record = record.substring(1);
-        String[] recordList = record.split(regex);
+        String[] recordList = splitRecord(record);
 
         if (isEvent(recordList)) {
             Event event = EventMapper.map(recordList);
@@ -45,8 +43,8 @@ public class TcpService {
             log.info(event.toString());
         } else if (isMarket(recordList)) {
             Market market = MarketMapper.map(recordList);
-            marketService.save(market);
-            log.info(market.toString());
+            Event event = marketService.save(market);
+            log.info(event.toString());
 
         } else if (isOutcome(recordList)) {
             Outcome outcome = OutcomeMapper.map(recordList);
@@ -59,6 +57,12 @@ public class TcpService {
             }
 
         }
+    }
+
+    private String[] splitRecord(String record) {
+        record = record.substring(1);
+        return record.split(regex);
+
     }
 
     private boolean isMarket(String[] recordList) {

@@ -19,7 +19,7 @@ public class UtilsTest {
 
     @Test(expected = NumberFormatException.class)
     public void testThrowsNumberFormatExceptionIfStringIsIncorrect() {
-        String input = "";
+        String input = "about";
         Date date = Utils.transformToDate(input);
     }
 }

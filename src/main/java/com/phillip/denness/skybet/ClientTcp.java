@@ -49,8 +49,6 @@ public class ClientTcp {
                 echoSocket.close();
             }
 
-
-            /** Closing all the resources */
             in.close();
             echoSocket.close();
         } catch (Exception e) {
